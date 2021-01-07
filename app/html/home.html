@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOME</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+ <div><h1>ESTAS EN EL HOME</h1></div>
+  <div id="containerFiltros">
+    <form id="formFiltros">
+      <label for="ciudad">Selecciona la ciudad</label>
+      <select name="ciudad" id="ciudad" >
+        <option value="irun">Irun</option>
+        <option value="donostia">donostia</option>
+        <option value="pamplona">Pamplona</option>
+      </select>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="todos">
+        <label class="form-check-label" for="inlineRadio1">Todos</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="activos">
+        <label class="form-check-label" for="inlineRadio2">Activos</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="inactivos">
+        <label class="form-check-label" for="inlineRadio3">Inactivos</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <script src="ui/home.js"></script>
+</body>
+
+</html>

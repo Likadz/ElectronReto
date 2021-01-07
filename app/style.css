@@ -1,0 +1,37 @@
+body{
+    background-image: url(./resources/fondo_vectorizado.jpg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-content: center;
+}
+   
+.container, .containerFiltros{
+    background-color: rgba(0, 0, 0, 0.616);
+    width: 30%;
+    padding: 5%;
+    justify-content: center;
+    margin-top: 10%;
+    align-self: center;
+}
+form{
+    padding: 5%;
+}
+label{
+    font-size: 25px;
+    color: white;
+
+}
+input{
+    font-size: 25px;
+}
+input[type=submit]{
+    font-size: 25px;
+    border-radius: 10px;
+    background-color: rgba(137, 184, 255, 0.349);
+    padding: 2%;
+}
+#msg{
+    color: rgb(199, 0, 0);
+    font-size: 20px;
+    text-align: center;
+}
