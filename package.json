@@ -1,5 +1,5 @@
 {
-  "name": "prueba2",
+  "name": "ElectronReto",
   "version": "1.0.0",
   "description": "",
   "main": "app/index.js",
@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "electron": "^8.5.5",
-    "mongoose": "^5.11.9"
+    "mongoose": "^5.11.10"
   }
 }

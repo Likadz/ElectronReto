@@ -6,37 +6,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../style.css">
+  <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
- <div><h1>ESTAS EN EL HOME</h1></div>
-  <div id="containerFiltros">
-    <form id="formFiltros">
-      <label for="ciudad">Selecciona la ciudad</label>
-      <select name="ciudad" id="ciudad" >
-        <option value="irun">Irun</option>
-        <option value="donostia">donostia</option>
-        <option value="pamplona">Pamplona</option>
-      </select>
 
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="todos">
-        <label class="form-check-label" for="inlineRadio1">Todos</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="activos">
-        <label class="form-check-label" for="inlineRadio2">Activos</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="inactivos">
-        <label class="form-check-label" for="inlineRadio3">Inactivos</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+  <div id="containerSup">
+    <img src="../resources/configuraciones.png" alt="" width="50px" height="50px">
+    <div id="containerFiltros">
+      <form id="formFiltros" >
+        <div class="form-row align-items-center">
+          <div class="col-md-3 mb-3">
+            <label for="ciudad">Selecciona la ciudad</label>
+            <select name="ciudad" id="ciudad" >
+              <option value="irun">Irun</option>
+              <option value="donostia">donostia</option>
+              <option value="pamplona">Pamplona</option>
+            </select>
+          </div>
+          
+          <div class="col-md-3 mb-3">
+            <label for="inlineRadioOptions"> Estado de la ruta:</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="todos">
+              <label class="form-check-label" for="inlineRadio1">Todos</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="activos">
+              <label class="form-check-label" for="inlineRadio2">Activos</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="inactivos">
+              <label class="form-check-label" for="inlineRadio3">Inactivos</label>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3"> <button type="submit" class="btn btn-primary">Submit</button></div>
+         
+        </div>
+        
+      </form>
+    </div>
+    <img src="../resources/charla.png" alt="" width="70px" height="70px">
   </div>
+  
+  <div id="containerContenidoHome">
+    <h2>Rutas</h2>
+    <div class="row">
+      <div class="col-md-4 " >
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" src="../resources/google-maps-nedir.jpg" alt="ruta image cap">
+          <div class="card-body">
+            <p class="card-text">Nombre de la ruta.</p>
+            <p class="card-text">Breve descripción de la ruta.</p>
+            <p class="card-text">Participantes actuales </p>
 
-  <script src="ui/home.js"></script>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary edit" id="1">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" >
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" src="../resources/google-maps-nedir.jpg" alt="ruta image cap">
+          <div class="card-body">
+            <p class="card-text">Nombre de la ruta.</p>
+            <p class="card-text">Breve descripción de la ruta.</p>
+            <p class="card-text">Participantes actuales </p>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary edit" id="2">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="containerAddRuta">
+    <button id="btnAdd">Add Ruta</button>
+  </div>
+  <script src="../ui/home.js"></script>
 </body>
 
 </html>

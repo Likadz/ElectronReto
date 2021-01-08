@@ -10,3 +10,15 @@ document.querySelector("#formFiltros").addEventListener('submit', e => {
 ipcRenderer.on('busqueda', (e,args)=>{
     console.log(args);
 })
+
+//add ruta (ir al form)
+document.querySelector("#btnAdd").addEventListener('click', e => {
+    ipcRenderer.send('addRuta');
+});
+
+//edit ruta
+document.querySelector(".edit").addEventListener('click', e => {
+    const id = this.attr('id');
+    console.log(id);
+    ipcRenderer.send('editRuta',id);
+});
