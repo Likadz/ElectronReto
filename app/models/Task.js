@@ -9,6 +9,10 @@ const newTaskSchema = new Schema({
     type: String,
     required: true
   },
+  ciudad:{
+    type: String,
+    required: true
+  }
 })
 
 module.exports = model('Task', newTaskSchema);

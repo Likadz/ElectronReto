@@ -1,6 +1,7 @@
 const { BrowserWindow, ipcMain, remote } = require("electron");
-//const Task = require("./models/Task");
-const Admin = require("./models/Admin");
+const Ruta = require("./models/Ruta");
+const Usuario = require("./models/Usuario");
+
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -15,50 +16,43 @@ function createWindow() {
   //win.setFullScreen(true)
 
   win.loadFile("app/html/index.html");
-}
-/*
-function createWindow2() {
-  const win = new BrowserWindow({
-    width: 500,
-    height: 700,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  });
-  
-  win.loadFile("app/registro.html");
+
 }
 
 //window registro
 ipcMain.on("registro", (e, arg)=>{
-  BrowserWindow.getFocusedWindow().loadFile('app/registro.html')//cambiamos el html de la ventana.
+  BrowserWindow.getFocusedWindow().loadFile('app/html/registro.html')//cambiamos el html de la ventana.
 })
-*/
 
+//cuando registra un usuario volvemos al login
+ipcMain.on("volver-login", (e, arg)=>{
+  BrowserWindow.getFocusedWindow().loadFile('app/html/index.html')//cambiamos el html de la ventana.
+})
 
-//crear un usuario administrador
-ipcMain.on("create-admin", async (e, arg) => {
-  //const todosAdmins = Admin.find();
+//crear un usuario usuarioistrador
+ipcMain.on("create-usuario", async (e, arg) => {
+  //const todosusuarios = usuario.find();
   console.log(arg);
-  const newAdmin = new Admin(arg);
-  const adminSaved = await newAdmin.save();
-  console.log(adminSaved);
-  e.reply("new-admin-created", JSON.stringify(adminSaved));
+  const newusuario = new Usuario(arg);
+  const usuarioSaved = await newusuario.save();
+  console.log(usuarioSaved);
+  e.reply("new-usuario-created", JSON.stringify(usuarioSaved));
 });
 
 //LOGIN
 ipcMain.on("login", async (e, arg) => {
-  const todosAdmins = await Admin.find();//find todos los admins
-  console.log(todosAdmins);
+  const usuario = new Usuario (arg);//usuario recibido por el form
+  //Get data conexion con la bbdd
+  const todosusuarios = await Usuario.find();//find todos los usuarios
+  console.log("los usuarios DB:\n" + todosusuarios + " args " + arg);
   login = false;
-  const admin = new Admin (arg);
-
-  for (let index = 0; index < todosAdmins.length; index++) {
-    const a=new Admin (todosAdmins[index])
-    if(a.nombre==admin.nombre && a.pwd ==admin.pwd){
+  
+  for (let index = 0; index < todosusuarios.length; index++) {
+    const a=new Usuario (todosusuarios[index])
+    if(a.nombre==usuario.nombre && a.contraseña ==usuario.contraseña && a.rol == usuario.rol && !a.conectado && a.conectado==usuario.conectado){
       login=true;
     }
- }
+  }
   
   if(login){
     console.log("al home");
@@ -70,40 +64,30 @@ ipcMain.on("login", async (e, arg) => {
     e.reply("login-error","EL USUARIO O CONTRASEÑA SON INCORRECTOS");
     console.log("EL USUARIO O CONTRASEÑA SON INCORRECTOS");
   }
-  //e.reply("login", JSON.stringify(todosAdmins));
 });
 
-ipcMain.on('filtrar', (e,arg)=>{
-  console.log(arg);
-  e.reply("busqueda",arg);
-})
-
-/*
-ipcMain.on("new-task", async (e, arg) => {
-  const newTask = new Task(arg);
-  const taskSaved = await newTask.save();
-  console.log(taskSaved);
-  e.reply("new-task-created", JSON.stringify(taskSaved));
+ipcMain.on("get-rutas", async (e, arg) => {
+  const rutas = await Ruta.find();
+  e.reply("get-rutas", JSON.stringify(rutas));
 });
 
-ipcMain.on("get-tasks", async (e, arg) => {
-  const tasks = await Task.find();
-  e.reply("get-tasks", JSON.stringify(tasks));
+ipcMain.on("delete-ruta", async (e, args) => {
+  const rutaDeleted = await Ruta.findByIdAndDelete(args);
+  e.reply("delete-ruta-success", JSON.stringify(rutaDeleted));
 });
 
-ipcMain.on("delete-task", async (e, args) => {
-  const taskDeleted = await Task.findByIdAndDelete(args);
-  e.reply("delete-task-success", JSON.stringify(taskDeleted));
+ipcMain.on("buscar", async (e, arg) => {
+  console.log("la ciudad " + arg);
+  const todosruta = await Ruta.find({ciudad:arg});//buscamos los que coincidan con el filtro de la ciudad.
+  console.log(todosruta);
+  //mostramos solo los filtrados
+  e.reply("busqueda-realizada", JSON.stringify(todosruta));
 });
 
-ipcMain.on("update-task", async (e, args) => {
-  console.log(args);
-  const updatedTask = await Task.findByIdAndUpdate(
-    args.idTaskToUpdate,
-    { name: args.name, description: args.description },
-    { new: true }
-  );
-  e.reply("update-task-success", JSON.stringify(updatedTask));
+ipcMain.on("exit", async (e, arg) => {
+  console.log("LOGOUT");
+
+  BrowserWindow.getFocusedWindow().loadFile('app/html/index.html')//cambiamos el html de la ventana.
 });
-*/
+
 module.exports = { createWindow };

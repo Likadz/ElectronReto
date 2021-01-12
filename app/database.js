@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://Leire:Plaiaundi2020@cluster0.vhbtl.mongodb.net/prueba?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://Josu:Plaiaundi2020@clusterjosu.zcvkx.mongodb.net/Reto?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -14,4 +14,4 @@ mongoose.connect('mongodb://localhost/reto', {
 })
   .then(db => console.log('DB is connected'))
   .catch(err => console.log(err));
-  */
+*/

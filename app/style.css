@@ -1,26 +1,50 @@
 /* GENERAL*/
-body{
-    background-image: url(./resources/fondo_vectorizado.jpg) ;
+xbody{
+    background-image:   url(./resources/fondo_vectorizado.jpg) ;
     background-repeat: no-repeat;
     background-size: cover;
     align-content: center;
+    
+}
+body:before {
+    content: '';
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image:  url(./resources/fondo_vectorizado.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-size: cover;
+    xfilter: blur(2px);
+    filter: opacity(35%);
+    z-index: -9;
 }
 /* LOGIN */
-.container{
-    background-color: rgba(0, 0, 0, 0.616);
-    width: 30%;
-    padding: 5%;
-    justify-content: center;
-    margin-top: 10%;
-    align-self: center;
+.logo{
+    width: 40%;
 }
-form{
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+}
+#form{
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
     padding: 5%;
 }
 label{
     font-size: 25px;
     color: white;
-
 }
 input{
     font-size: 25px;
@@ -32,9 +56,17 @@ input[type=submit]{
     padding: 2%;
 }
 #msg{
-    color: rgb(199, 0, 0);
+    color: rgb(255, 0, 0);
+    text-shadow: 2px 2px #0000008a;
     font-size: 20px;
     text-align: center;
+}
+
+#rutaRegistro{
+    color: rgb(0, 0, 165);
+    font-size: 18px;
+    font-weight: normal;
+    cursor: pointer;
 }
 
 /* HOME */
@@ -42,17 +74,25 @@ input[type=submit]{
 #containerSup{
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     padding: 5px 0;
 }
 
 /* container filtros del home */
 #containerFiltros{
-    background-color: rgba(0, 0, 0, 0.616);
-    width: 70%;
-    margin: 0 auto;
-    padding: 2px 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    padding: 5%;
+}
+#formFiltros{
+    justify-content: space-between;
 }
 
 #containerContenidoHome{
@@ -69,3 +109,28 @@ input[type=submit]{
 #btnAdd{
     background-color: rgb(145, 255, 178);
 }
+
+.cardMisEfectos{
+    xborder-color: #00000059;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.795);
+    border: 5px solid rgb(255, 255, 255);
+}
+
+.exit{
+    width: 150px;
+    height: 100px;
+}
+/* TUTORIAL */
+.btn-danger {
+    background: #ed3330;
+}
+
+.btn-secondary {
+    background: #c8d6e5;
+    color: #222f3e !important; 
+}
+
+.btn:hover {
+    transform: scale(1.2);
+}
+  
